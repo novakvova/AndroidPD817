@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String url = "https://i2.rozetka.ua/goods/1774405/ferrero_5413548040875_images_1774405319.jpg";
+        String url = "http://10.0.2.2:5000/images/1.jpg";
 
         imageRequester = ImageRequester.getInstance();
         myImage = findViewById(R.id.myImage);
