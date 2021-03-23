@@ -3,9 +3,13 @@ package com.example.nursery;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.nursery.network.ImageRequester;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,5 +25,12 @@ public class MainActivity extends AppCompatActivity {
         imageRequester = ImageRequester.getInstance();
         myImage = findViewById(R.id.myImage);
         imageRequester.setImageFromUrl(myImage, url);
+    }
+
+    public void onClickLogin(View view) {
+        final TextInputLayout emailLayout = findViewById(R.id.inputLayoutEmail);
+        final TextInputEditText email = findViewById(R.id.textFieldEmail);
+        Log.d("clickLogin", email.getText().toString());
+        emailLayout.setError("У нас проблеми");
     }
 }
