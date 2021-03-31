@@ -13,8 +13,11 @@ import com.example.nursery.network.account.AccountService;
 import com.example.nursery.network.account.dto.LoginDTO;
 import com.example.nursery.network.account.dto.LoginResultDTO;
 import com.example.nursery.network.account.dto.RegisterDTO;
+import com.example.nursery.network.account.dto.ValidationRegisterDTO;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -65,6 +68,10 @@ public class RegisterActivity extends AppCompatActivity {
                         {
                             try {
                                 String json = response.errorBody().string();
+                                Gson gson = new Gson();
+                                ValidationRegisterDTO result = gson.fromJson(json, ValidationRegisterDTO.class);
+                                //JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+                                //JsonArray jsonArray = result.getAsJsonArray("servers");
                                 Log.d("Bad request: ", json);
                             } catch (Exception ex) {
 
