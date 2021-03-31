@@ -10,11 +10,11 @@ namespace Nursery.Application.Validators
 		public static IRuleBuilder<T, string> Password<T>(this IRuleBuilder<T, string> ruleBuilder)
 		{
 			var options = ruleBuilder
-				.NotEmpty()
-				.MinimumLength(6).WithMessage("Password must be at least 6 characters")
-				.Matches("[A-Z]").WithMessage("Password must contain 1 uppercase letter")
-				.Matches("[0-9]").WithMessage("Password must contain a number")
-				.Matches("[^a-zA-Z0-9]").WithMessage("Password must contain non alphanumeric");
+				.NotEmpty().WithMessage("Поле не можу бути пустим")
+				.MinimumLength(6).WithMessage("Пароль повинен містити щонайменше 6 символів")
+				.Matches("[A-Z]").WithMessage("Пароль повинен містити 1 велику літеру")
+				.Matches("[0-9]").WithMessage("Пароль повинен містити номер")
+				.Matches("[^a-zA-Z0-9]").WithMessage("Пароль повинен містити спецсимволи");
 
 			return options;
 		}

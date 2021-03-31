@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         final TextInputLayout emailLayout = findViewById(R.id.inputLayoutEmail);
         final TextInputEditText email = findViewById(R.id.textFieldEmail);
 
-        final TextInputLayout emailPassword = findViewById(R.id.inputLayoutPassword);
+        final TextInputLayout passwordLayout = findViewById(R.id.inputLayoutPassword);
         final TextInputEditText password = findViewById(R.id.textFieldPassword);
         //Log.d("clickLogin", email.getText().toString());
         //emailLayout.setError("У нас проблеми");
@@ -70,8 +70,37 @@ public class RegisterActivity extends AppCompatActivity {
                                 String json = response.errorBody().string();
                                 Gson gson = new Gson();
                                 ValidationRegisterDTO result = gson.fromJson(json, ValidationRegisterDTO.class);
-                                //JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
-                                //JsonArray jsonArray = result.getAsJsonArray("servers");
+                                String str="";
+                                if(result.getErrors().getEmail()!=null) {
+                                    for (String item : result.getErrors().getEmail()) {
+                                        str += item + "\n";
+                                    }
+                                    emailLayout.setError(str);
+                                }
+                                else {
+                                    emailLayout.setError("");
+                                }
+
+                                if(result.getErrors().getDisplayName()!=null) {
+                                    str = "";
+                                    for (String item : result.getErrors().getDisplayName()) {
+                                        str += item + "\n";
+                                    }
+                                    displayNameLayout.setError(str);
+                                }
+                                else {
+                                    displayNameLayout.setError("");
+                                }
+                                if(result.getErrors().getPassword()!=null) {
+                                    str = "";
+                                    for (String item : result.getErrors().getPassword()) {
+                                        str += item + "\n";
+                                    }
+                                    passwordLayout.setError(str);
+                                }
+                                else {
+                                    passwordLayout.setError("");
+                                }
                                 Log.d("Bad request: ", json);
                             } catch (Exception ex) {
 

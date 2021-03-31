@@ -32,7 +32,9 @@ namespace Nursery.Application.Account.Registration
 		{
 			if (await _context.Users.Where(x => x.Email == request.Email).AnyAsync())
 			{
-				throw new RestException(HttpStatusCode.BadRequest, new { Email = "Email already exist" });
+				throw new RestException(HttpStatusCode.BadRequest, new { Email =
+					new string[] { "Email already exist" } 
+				});
 			}
 
 			//if (await _context.Users.Where(x => x.UserName == request.UserName).AnyAsync())

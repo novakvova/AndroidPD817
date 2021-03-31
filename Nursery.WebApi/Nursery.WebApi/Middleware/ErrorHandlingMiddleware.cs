@@ -38,7 +38,11 @@ namespace Nursery.WebApi.Middleware
             {
                 case RestException rest:
                     logger.LogError(ex, "Rest error");
-                    errors = rest.Errors;
+                    errors = new
+                        {
+                            status = (int)rest.Code,
+                            errors= rest.Errors
+                        };
                     context.Response.StatusCode = (int)rest.Code;
                     break;
                 // ReSharper disable once PatternAlwaysOfType
@@ -53,10 +57,9 @@ namespace Nursery.WebApi.Middleware
 
             if (errors != null)
             {
-                var result = JsonConvert.SerializeObject(new
-                {
+                var result = JsonConvert.SerializeObject(
                     errors
-                });
+                );
 
                 await context.Response.WriteAsync(result);
             }
