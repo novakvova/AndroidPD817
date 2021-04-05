@@ -4,8 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Nursery.WebApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class BaseController : ControllerBase
     {
         private IMediator _mediator;
