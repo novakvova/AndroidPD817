@@ -19,6 +19,7 @@ namespace Nursery.WebApi.Controllers
         {
             var userName = User.Claims
                  .FirstOrDefault(x => x.Type == "username").Value;
+
             return null;
         }
     }
