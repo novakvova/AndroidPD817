@@ -41,12 +41,12 @@ namespace Nursery.Application.Account.Profile
                 throw new RestException(HttpStatusCode.NotFound);
             }
 
-            string image = "/" + _configuration.GetValue<string>("Folders:URLImages")+"no-image.png";
+            string image = "/" + _configuration.GetValue<string>("Folders:URLImages")+"/no-image.png";
             //if(user.Image)
             return new ProfileViewModel
             {
                 Email = user.Email,
-                Image = null
+                Image = image
             };
         }
     }
