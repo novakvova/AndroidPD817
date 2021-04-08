@@ -122,4 +122,9 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void onClickLogin(View view) {
+        Intent profileIntent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(profileIntent);
+    }
 }

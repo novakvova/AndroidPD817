@@ -40,8 +40,8 @@ namespace Nursery.Application.Account.Profile
             {
                 throw new RestException(HttpStatusCode.NotFound);
             }
-
-            string image = "/" + _configuration.GetValue<string>("Folders:URLImages")+"/no-image.png";
+            string userImage = user.Image ?? "no-image.png";
+            string image = "/" + _configuration.GetValue<string>("Folders:URLImages")+"/"+userImage;
             //if(user.Image)
             return new ProfileViewModel
             {

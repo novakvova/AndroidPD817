@@ -43,10 +43,7 @@ namespace Nursery.Application.Account.Login
             {
                 return new UserViewModel
                 {
-                    DisplayName = user.DisplayName,
-                    Token = _jwtGenerator.CreateToken(user),
-                    UserName = user.UserName,
-                    Image = null
+                    Token = _jwtGenerator.CreateToken(user)
                 };
             }
 
